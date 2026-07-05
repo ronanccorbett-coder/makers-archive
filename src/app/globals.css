@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+/*
+  Threadhaus — Atelier Ledger design system.
+  Tokens are intentionally small and named. Use Tailwind utilities for layout,
+  and these custom utility classes for type and color.
+*/
+
+:root {
+  /* surface */
+  --th-paper: #F4F0E6;
+  --th-paper-card: #FBF9F3;
+  --th-ink: #211D17;
+  --th-ink-soft: #4a4439;
+  --th-ink-muted: #8a8378;
+
+  /* accent */
+  --th-oxblood: #8C2F25;
+  --th-oxblood-dark: #6E2219;
+
+  /* rules & dividers */
+  --th-rule: #DAD2C0;
+  --th-rule-soft: #E3DAC6;
+
+  /* type */
+  --th-display: "Playfair Display", ui-serif, Georgia, serif;
+  --th-body: "Cormorant", ui-serif, Georgia, serif;
+  --th-utility: "Jost", ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--th-paper);
+  --color-foreground: var(--th-ink);
+  --font-sans: var(--th-utility);
+  --font-serif: var(--th-body);
+  --font-display: var(--th-display);
+}
+
+html, body { height: 100%; }
+body {
+  background: var(--th-paper);
+  color: var(--th-ink);
+  font-family: var(--th-body);
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The site uses three roles: display, body, utility. Use these classes
+   directly rather than re-declaring font-family everywhere. */
+.font-display { font-family: var(--th-display); font-weight: 600; letter-spacing: -0.01em; }
+.font-body    { font-family: var(--th-body); }
+.font-utility { font-family: var(--th-utility); }
+
+/* Eyebrow label — small caps utility used above headings */
+.eyebrow {
+  font-family: var(--th-utility);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--th-oxblood);
+  font-weight: 500;
+}
+
+/* Hairline rule */
+.hr-hair { border: 0; border-top: 1px solid var(--th-rule); }
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--th-utility);
+  background: var(--th-ink);
+  color: var(--th-paper);
+  border: none;
+  padding: 14px 28px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: var(--th-oxblood); }
+.btn-primary:disabled { background: var(--th-ink-muted); cursor: not-allowed; }
+.btn-block { width: 100%; padding: 16px 28px; }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--th-utility);
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--th-ink);
+  cursor: pointer;
+  border-bottom: 1px solid var(--th-ink);
+  padding: 0 0 3px;
+}
+
+/* Progress (the ledger track) */
+.ledger-track {
+  height: 3px;
+  background: var(--th-rule-soft);
+}
+.ledger-fill {
+  height: 100%;
+  background: var(--th-oxblood);
+  transition: width 0.4s ease;
+}
+
+/* Card surface */
+.card-paper {
+  background: var(--th-paper-card);
+  border: 1px solid var(--th-rule);
+}
+
+/* Image placeholders — we use this until real photo uploads ship.
+   The gradient suggests fabric / pattern paper rather than a flat gray box. */
+.swatch-placeholder {
+  background: linear-gradient(160deg, #C9B8A3, #9A8267);
+}
+
+/* Form fields — kept editorial but functional */
+.field-label {
+  display: block;
+  font-family: var(--th-utility);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--th-ink-soft);
+  margin-bottom: 6px;
+}
+.field-input,
+.field-textarea {
+  width: 100%;
+  background: var(--th-paper-card);
+  border: 1px solid var(--th-rule);
+  padding: 11px 13px;
+  font-family: var(--th-body);
+  font-size: 17px;
+  color: var(--th-ink);
+  border-radius: 2px;
+}
+.field-input:focus,
+.field-textarea:focus {
+  outline: 2px solid var(--th-oxblood);
+  outline-offset: -1px;
+}
+.field-textarea { min-height: 140px; line-height: 1.5; }
+
+/* Tag pills used on cards for status (LIVE / FUNDED) */
+.status-pill {
+  display: inline-block;
+  font-family: var(--th-utility);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+.status-pill--live { background: var(--th-paper-card); color: var(--th-oxblood); border: 1px solid var(--th-rule); }
+.status-pill--funded { background: var(--th-oxblood); color: var(--th-paper); }
+.status-pill--expired { background: var(--th-rule); color: var(--th-ink-soft); }
