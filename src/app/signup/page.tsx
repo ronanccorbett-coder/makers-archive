@@ -84,7 +84,7 @@ export default function SignupPage() {
 
   return (
     <div className="mx-auto max-w-[440px] px-6 py-20">
-      <span className="eyebrow">Join Threadhaus</span>
+      <span className="eyebrow">Join The Makers Archive</span>
       <h1 className="font-display text-[40px] leading-tight mt-2 mb-4">
         {stage === "profile" ? "One last thing." : "Begin your record."}
       </h1>
@@ -147,7 +147,7 @@ export default function SignupPage() {
                 className="field-input"
               />
               <span className="font-body italic text-[14px] text-[var(--th-ink-muted)] mt-1 block">
-                Your page will be at threadhaus.com/studios/{handle || "your-name"}
+                Your page will be at makersarchive.com/studios/{handle || "your-name"}
               </span>
             </label>
             <label className="flex items-center gap-3 mt-2">
@@ -191,7 +191,7 @@ export default function SignupPage() {
         </button>
 
         <p className="font-body text-[15px] text-[var(--th-ink-soft)] mt-6 text-center">
-          Already on Threadhaus?{" "}
+          Already on The Makers Archive?{" "}
           <Link href="/login" className="text-[var(--th-oxblood)] underline underline-offset-2">
             Sign in
           </Link>

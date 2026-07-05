@@ -10,7 +10,7 @@ export default function OnboardingPage() {
         Submit a design.
       </h1>
       <p className="font-body text-[19px] text-[var(--th-ink-soft)] leading-[1.55] mb-10">
-        Threadhaus is currently invite-curated. Apply with a few work samples
+        The Makers Archive is currently invite-curated. Apply with a few work samples
         and we’ll be in touch within a week. If you’ve already been
         approved, head straight to your studio.
       </p>
@@ -28,7 +28,7 @@ export default function OnboardingPage() {
 
       <div className="flex flex-wrap gap-4">
         <a
-          href="mailto:designers@threadhaus.com?subject=Application"
+          href="mailto:designers@makersarchive.com?subject=Application"
           className="btn-primary"
         >
           Email an application

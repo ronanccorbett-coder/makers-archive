@@ -1,6 +1,6 @@
 // instant.perms.ts
 //
-// Permissions for Threadhaus. Push with: npx instant-cli push perms
+// Permissions for The Makers Archive. Push with: npx instant-cli push perms
 //
 // IMPORTANT: by default InstantDB allows all reads and writes from any client.
 // This file locks that down. Every entity should have explicit rules.

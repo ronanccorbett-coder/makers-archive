@@ -1,6 +1,6 @@
 // instant.schema.ts
 //
-// Threadhaus InstantDB schema. This file defines the shape of the database
+// The Makers Archive InstantDB schema. This file defines the shape of the database
 // and is the single source of truth for entities and their relationships.
 // Push changes with: npx instant-cli push schema
 //

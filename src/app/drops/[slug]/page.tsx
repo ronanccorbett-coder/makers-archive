@@ -210,7 +210,7 @@ export default function DropDetailPage({
             <ShareButton
               url={`/drops/${drop.slug}`}
               title={drop.title}
-              text={`${drop.title} by ${drop.designerName} on Threadhaus`}
+              text={`${drop.title} by ${drop.designerName} on The Makers Archive`}
             />
             <p className="font-body italic text-[13px] text-[var(--th-ink-muted)]">
               Sharing helps fund it.

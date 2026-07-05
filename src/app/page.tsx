@@ -107,7 +107,7 @@ export default function HomePage() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          <div className="columns-2 lg:columns-3 xl:columns-4 [column-gap:1.25rem]">
             {filtered.map((d) => (
               <DropCard key={d.id} drop={d} />
             ))}

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
-  Threadhaus — Atelier Ledger design system.
+  The Makers Archive — Atelier Ledger design system.
   Tokens are intentionally small and named. Use Tailwind utilities for layout,
   and these custom utility classes for type and color.
 */
@@ -166,3 +166,18 @@ body {
 .status-pill--live { background: var(--th-paper-card); color: var(--th-oxblood); border: 1px solid var(--th-rule); }
 .status-pill--funded { background: var(--th-oxblood); color: var(--th-paper); }
 .status-pill--expired { background: var(--th-rule); color: var(--th-ink-soft); }
+
+/* Save/reserve pill — the hover affordance on masonry feed cards. Editorial
+   oxblood chip rather than a generic red circle. */
+.save-pill {
+  font-family: var(--th-utility);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: var(--th-oxblood);
+  color: var(--th-paper);
+  padding: 8px 15px;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px -6px rgba(33, 29, 23, 0.55);
+}

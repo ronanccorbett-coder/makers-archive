@@ -17,7 +17,7 @@ if (!APP_ID) {
   // build via env validation; for now a runtime warning is enough.
   // eslint-disable-next-line no-console
   console.warn(
-    "[threadhaus] NEXT_PUBLIC_INSTANT_APP_ID is not set. " +
+    "[makers-archive] NEXT_PUBLIC_INSTANT_APP_ID is not set. " +
       "Add it to .env.local — see README.md for setup."
   );
 }

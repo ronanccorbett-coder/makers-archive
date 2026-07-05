@@ -5,7 +5,7 @@ import { SiteFooter } from "./_components/site-footer";
 import { DBProvider } from "./_components/db-provider";
 
 export const metadata: Metadata = {
-  title: "Threadhaus — Fashion, held to account",
+  title: "The Makers Archive — Fashion, held to account",
   description:
     "An archive of pieces that exist only because enough people wanted them to.",
 };

@@ -19,7 +19,7 @@ type SendArgs = {
   replyTo?: string;
 };
 
-const FROM = process.env.EMAIL_FROM || "Threadhaus <ledger@threadhaus.com>";
+const FROM = process.env.EMAIL_FROM || "The Makers Archive <ledger@makersarchive.com>";
 
 export async function sendEmail(args: SendArgs): Promise<void> {
   const key = process.env.RESEND_API_KEY;
@@ -61,7 +61,7 @@ export async function sendEmail(args: SendArgs): Promise<void> {
 
 const wrap = (body: string) => `
 <div style="font-family: Georgia, 'Cormorant', serif; color: #211D17; background: #F4F0E6; padding: 32px; max-width: 540px; margin: 0 auto;">
-  <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8C2F25;">THREADHAUS</div>
+  <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8C2F25;">THE MAKERS ARCHIVE</div>
   <hr style="border: none; border-top: 1px solid #DAD2C0; margin: 16px 0 24px;" />
   <div style="font-size: 18px; line-height: 1.5;">${body}</div>
 </div>`;

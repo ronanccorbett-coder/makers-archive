@@ -1,4 +1,4 @@
-# Threadhaus
+# The Makers Archive
 
 A demand-validated fashion marketplace. Designers list pieces, supporters pledge, production only proceeds when a piece hits its funding goal. Built on Next.js (App Router), InstantDB, Stripe, and Vercel.
 

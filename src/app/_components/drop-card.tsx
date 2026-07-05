@@ -37,10 +37,13 @@ export function DropCard({ drop }: { drop: DropCardData }) {
   return (
     <Link
       href={`/drops/${drop.slug}`}
-      className="block group"
+      className="block group mb-5 break-inside-avoid"
       aria-label={`View ${drop.title} by ${designerLabel}`}
     >
-      <div className="aspect-[3/4] mb-4 overflow-hidden relative">
+      {/* Image-first card. Natural height so the feed packs like a masonry
+          board, but we keep the paper border + soft rounding of the atelier
+          system rather than a flat Pinterest tile. */}
+      <div className="mb-3 overflow-hidden relative rounded-xl border border-[var(--th-rule)] bg-[var(--th-paper-card)] transition-shadow duration-300 group-hover:shadow-[0_14px_34px_-14px_rgba(33,29,23,0.45)]">
         {drop.coverImageUrl ? (
           // Plain img tag is fine for the MVP - we'll move to next/image when
           // we have real photo storage with known dimensions.
@@ -48,11 +51,21 @@ export function DropCard({ drop }: { drop: DropCardData }) {
           <img
             src={drop.coverImageUrl}
             alt={drop.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         ) : (
-          <div className="swatch-placeholder w-full h-full" />
+          <div className="swatch-placeholder w-full aspect-[3/4]" />
         )}
+
+        {/* Darken slightly on hover to lift the save pill off the image */}
+        <div className="absolute inset-0 bg-[var(--th-ink)]/0 group-hover:bg-[var(--th-ink)]/10 transition-colors duration-300" />
+
+        {/* Save/reserve affordance — the signature hover interaction. It's a
+            visual pill (not a nested button) so the whole card stays one link. */}
+        <span className="save-pill absolute top-3 right-3 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
+          Reserve
+        </span>
+
         {drop.status === "funded" && (
           <span className="status-pill status-pill--funded absolute top-3 left-3">
             Funded
@@ -65,7 +78,7 @@ export function DropCard({ drop }: { drop: DropCardData }) {
         )}
       </div>
 
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 px-0.5">
         {drop.refNumber && (
           <span className="eyebrow">No. {drop.refNumber}</span>
         )}
