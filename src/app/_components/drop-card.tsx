@@ -40,10 +40,12 @@ export function DropCard({ drop }: { drop: DropCardData }) {
       className="block group mb-5 break-inside-avoid"
       aria-label={`View ${drop.title} by ${designerLabel}`}
     >
-      {/* Image-first card. Natural height so the feed packs like a masonry
-          board, but we keep the paper border + soft rounding of the atelier
-          system rather than a flat Pinterest tile. */}
-      <div className="mb-3 overflow-hidden relative rounded-xl border border-[var(--th-rule)] bg-[var(--th-paper-card)] transition-shadow duration-300 group-hover:shadow-[0_14px_34px_-14px_rgba(33,29,23,0.45)]">
+      {/* Everything lives on one image tile now. At rest the card is pure
+          photo with a thin ledger bar seated along the bottom; the title,
+          designer and Reserve pill rise on hover. Natural height keeps the
+          masonry packing, and we keep the paper border + soft rounding of the
+          atelier system rather than a flat Pinterest tile. */}
+      <div className="relative overflow-hidden rounded-xl border border-[var(--th-rule)] bg-[var(--th-paper-card)] transition-shadow duration-300 group-hover:shadow-[0_14px_34px_-14px_rgba(33,29,23,0.45)]">
         {drop.coverImageUrl ? (
           // Plain img tag is fine for the MVP - we'll move to next/image when
           // we have real photo storage with known dimensions.
@@ -57,8 +59,9 @@ export function DropCard({ drop }: { drop: DropCardData }) {
           <div className="swatch-placeholder w-full aspect-[3/4]" />
         )}
 
-        {/* Darken slightly on hover to lift the save pill off the image */}
-        <div className="absolute inset-0 bg-[var(--th-ink)]/0 group-hover:bg-[var(--th-ink)]/10 transition-colors duration-300" />
+        {/* Scrim that deepens on hover so the overlaid text stays legible.
+            A faint permanent foot keeps the ledger bar readable at rest. */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--th-ink)]/35 via-transparent to-transparent group-hover:from-[var(--th-ink)]/85 group-hover:via-[var(--th-ink)]/15 transition-colors duration-300" />
 
         {/* Save/reserve affordance — the signature hover interaction. It's a
             visual pill (not a nested button) so the whole card stays one link. */}
@@ -76,25 +79,29 @@ export function DropCard({ drop }: { drop: DropCardData }) {
             Closed
           </span>
         )}
-      </div>
 
-      <div className="flex flex-col gap-1 px-0.5">
-        {drop.refNumber && (
-          <span className="eyebrow">No. {drop.refNumber}</span>
-        )}
-        <h3 className="font-display text-[22px] leading-tight text-[var(--th-ink)] group-hover:text-[var(--th-oxblood)] transition-colors">
-          {drop.title}
-        </h3>
-        <span className="font-body italic text-[15px] text-[var(--th-ink-soft)] mb-2">
-          {designerLabel}
-        </span>
-        <div className="flex items-center gap-3">
-          <div className="ledger-track flex-1">
+        {/* Bottom block. Title/designer are hidden until hover; the ledger bar
+            is always visible as the at-rest signal (no number). */}
+        <div className="absolute inset-x-0 bottom-0 p-3.5">
+          <div className="mb-2.5 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+            {drop.refNumber && (
+              <span
+                className="eyebrow"
+                style={{ color: "rgba(244,240,230,0.7)" }}
+              >
+                No. {drop.refNumber}
+              </span>
+            )}
+            <h3 className="font-display text-[20px] leading-tight text-[var(--th-paper)]">
+              {drop.title}
+            </h3>
+            <span className="font-body italic text-[14px] text-[var(--th-paper)]/80">
+              {designerLabel}
+            </span>
+          </div>
+          <div className="ledger-track">
             <div className="ledger-fill" style={{ width: `${percent}%` }} />
           </div>
-          <span className="font-utility text-[11px] text-[var(--th-oxblood)] font-medium tabular-nums">
-            {percent}%
-          </span>
         </div>
       </div>
     </Link>
